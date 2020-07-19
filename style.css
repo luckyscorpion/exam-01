@@ -1,0 +1,321 @@
+@charset "UTF-8";
+/*基本設定*/
+* {
+    margin: 0;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+/*ページ全体の設定*/
+body{
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 
+                        [head]100px
+                        [title]auto
+                        [sub]auto
+                        [recent]auto
+                        [pro]auto
+                        [exam]auto
+                        [foot]100px;
+    grid-row-gap: 20px;
+    row-gap: 20px;
+}
+/*パーツの配置*/
+body>*{
+    grid-column: 2 / -2;
+}
+/*ヘッダー*/
+header {
+    position: fixed;
+    padding-left: 5%;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    grid-row: head;
+    grid-column: 1 / -1;
+}
+header a {
+    font-size: 40px;
+    color: #555d6b;
+    font-family: 'Sawarabi Mincho', sans-serif;
+    text-decoration: none;
+}
+
+/*ナビゲーション*/
+nav{
+    position:fixed;
+    left: 15%;
+    top: 60px;
+    grid-row: head;
+    justify-self: center;
+    align-self: end;
+}
+ nav ul{
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 20px;
+    column-gap: 20px;
+}
+nav a {
+    color: #666666;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+nav a:hover{
+    color: #ef9504;
+}
+
+
+/*ヒーローイメージ*/
+figure.hero {
+    display: grid;
+    grid-row: title / span 2;
+    grid-column: 1 / -1;
+
+}
+figure.hero img{
+    height: 547px;
+    object-fit: cover;
+    vertical-align: bottom;
+    z-index: -1;
+}
+/*タイトル*/
+h1{
+    height: 200px;
+    grid-row: title;
+    color: white;
+    font-size: 41px;
+    font-weight: normal;
+    line-height: 1.2;
+    text-shadow: 0 0 5px #444;
+    line-height: 1.5;
+    font-family: 'Sawarabi Gothic', sans-serif;
+}
+/*サブタイトル*/
+p.circle{
+    grid-row: sub;
+}
+p.circle img{
+    width: 250px;
+    align-self: end;
+}
+/*記事一覧*/
+section.top, aside ul {
+    grid-row: recent;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px 10px;
+    gap: 20px 10px;
+}
+section a, aside a{
+    text-decoration: none;
+    color: #000;
+}
+section a:hover, aside a:hover{
+    text-decoration: underline;
+}
+section h2{
+    grid-column: 1 / -1;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;;
+}
+section h3, aside h3{
+    font-family: 'Sawarabi Gothic',;
+    font-size: 14px;
+}
+ul{
+    list-style-type: none;
+}
+/*記事ページの設定*/
+p.bg-img{
+    display: grid;
+    grid-row: title / span 2;
+    grid-column: 1 / -1;
+}
+p.bg-img img{
+    height: 500px;
+    object-fit: cover;
+    vertical-align: bottom;
+    z-index: -1;
+}
+div.post{
+    grid-row: recent;
+    display: grid;
+}
+div.post p{
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+span.number{
+    color: red;
+    font-weight: bold;
+}
+span.topic{
+    color: #444;
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 1px;
+    text-decoration: underline  #f5ca93;
+    
+}
+span.important{
+    background-color: rgba(245, 202, 147, 0.5);
+}
+
+span.ttl{
+    color: rgb(255, 59, 150);
+    font-size: 28px;
+    font-weight: bold;
+}
+div.post ul{
+    font-size: 22px;
+}
+.post h3{
+    font-size: 25px;
+    color: black;
+    background-color: gainsboro ;
+    border-left: solid lightskyblue 6px ;
+    padding-left: 10px;
+}
+div.post a{
+    color: gray;
+    text-decoration: none;
+}
+div.post a:hover{
+    color: #ef9504;
+    text-decoration: none;
+}
+/*プロフィール*/
+div.menu{
+    grid-row: pro;
+}
+aside{
+    border: solid 1px #ddd;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+aside h2{
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    color: #888;
+    font-weight: normal;
+}
+aside p{
+    font-size: 14px;
+}
+aside ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+/*フッター*/
+footer{
+    grid-row: foot;
+    justify-self: center;
+    align-self: center;
+    font-size: 13px;
+}
+/*フッターのバー*/
+body::after{
+    content: "";
+background-color: #eee;
+grid-column: 1 / -1;
+grid-row: foot;
+z-index: -1;
+}
+
+/*=====pc版の設定=====*/
+@media(min-width: 768px){
+/*pc版　ページ全体の設定*/
+body{
+    grid-template-columns: 0.2fr repeat(6,1fr) 0.2fr;
+    grid-column-gap: 20px;
+    column-gap: 20px;
+}
+header{
+    padding-left: 35%;
+}
+nav{
+    padding-left: 22%;
+}
+figure.hero img{
+    height: 650px;
+}
+h1{
+    grid-row: title;
+    justify-self: center;
+    align-self: start;
+    font-size: 80px;
+    grid-column: 2 / span 3;
+}
+h1.about-ttl{
+    font-size: 60px;
+}
+
+p.circle{
+    grid-row: sub;
+    text-align: end;
+    align-self: end;
+}
+p.circle img{
+    width: 500px;
+    text-align: end;
+    align-self: end;
+}
+div.post{
+    display: block;
+}
+div.post figure{
+    width: 340px;
+}
+div.post figure img{
+    width: 340px;
+}
+figure.moshi4-img , figure.moshi8-img {
+    display: inline-block;
+}
+figure.moshi4-img img{
+    margin-bottom: 50px;
+}
+p.bg-img {
+    grid-column: 2 / span 4   
+}
+p.bg-img img{
+    height: 650px;
+}
+
+div.post{
+    grid-column: 2 / span 4;
+}
+div.menu{
+    grid-row: title;
+    grid-column: 6 / span 2;
+}
+
+
+section.top{
+    grid-template-columns:repeat(4, 1fr) ;
+}
+section h3{
+    font-size: 25px;
+}
+
+/*pc 記事ページの設定*/
+article.post{
+    grid-row: recent;
+}
+
+}
+
